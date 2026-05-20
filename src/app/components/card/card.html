@@ -1,0 +1,5 @@
+<section class="cards">
+  @for (imagen of imagenes; track $index) {
+    <div class="card" [ngStyle]="{ 'background-image': 'url(' + imagen + ')' }"></div>
+  }
+</section>
