@@ -1,32 +1,39 @@
 <section class="cards">
   @for (prenda of prenda; track $index) {
-    <div
-      class="card"
-      [ngStyle]="{ 'background-image': 'url(' + prenda.main + ')' }"
-      (click)="enableModal($index, prenda)"
-    ></div> 
+    <div class="card">
+      <img [src]="prenda.main" [alt]="prenda.nombre" (click)="enableModal($index, prenda)">
+
+      <div class="card-info">
+        <div class="card-header">
+          <h2>{{ prenda.nombre }}</h2>
+          <span>{{ prenda.category }}</span>
+        </div>
+
+        <p class="card-meta">{{ prenda.fit }} · {{ prenda.material.join(', ') }}</p>
+        <p class="card-colors">{{ prenda.color.join(', ') }} · {{ prenda.season.join(', ') }}</p>
+        <p class="card-description">{{ prenda.description }}</p>
+
+        <div class="card-tags">
+          @for (tag of prenda.tags; track tag) {
+            <span>#{{ tag }}</span>
+          }
+        </div>
+      </div>
+    </div> 
   }
 
   <div class="modal" [ngClass]="visibility">
-    <button
-      class="modal-arrow modal-arrow-left"
-      type="button"
-      aria-label="Imagen anterior"
-      (click)="previousImage()"
-    >
+    <button class="modal-arrow modal-arrow-left" type="button" aria-label="Imagen anterior" (click)="previousImage()" >
       ‹
     </button>
 
-    <div class="modal-content" [ngStyle]="{ 'background-image': 'url(' + modalImage + ')' }">
+    <div class="modal-content">
       <span class="close-button" (click)="modalDisable()">×</span>
+      <img [src]="modalImage" [alt]="modalName">
     </div>
 
     <button
-      class="modal-arrow modal-arrow-right"
-      type="button"
-      aria-label="Imagen siguiente"
-      (click)="nextImage()"
-    >
+      class="modal-arrow modal-arrow-right" type="button" aria-label="Imagen siguiente" (click)="nextImage()">
       ›
     </button>
   </div>
