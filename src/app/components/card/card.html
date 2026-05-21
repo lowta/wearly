@@ -1,5 +1,33 @@
 <section class="cards">
-  @for (imagen of imagenes; track $index) {
-    <div class="card" [ngStyle]="{ 'background-image': 'url(' + imagen + ')' }"></div>
+  @for (prenda of prenda; track $index) {
+    <div
+      class="card"
+      [ngStyle]="{ 'background-image': 'url(' + prenda.main + ')' }"
+      (click)="enableModal($index, prenda)"
+    ></div> 
   }
+
+  <div class="modal" [ngClass]="visibility">
+    <button
+      class="modal-arrow modal-arrow-left"
+      type="button"
+      aria-label="Imagen anterior"
+      (click)="previousImage()"
+    >
+      ‹
+    </button>
+
+    <div class="modal-content" [ngStyle]="{ 'background-image': 'url(' + modalImage + ')' }">
+      <span class="close-button" (click)="modalDisable()">×</span>
+    </div>
+
+    <button
+      class="modal-arrow modal-arrow-right"
+      type="button"
+      aria-label="Imagen siguiente"
+      (click)="nextImage()"
+    >
+      ›
+    </button>
+  </div>
 </section>

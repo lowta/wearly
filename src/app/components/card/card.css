@@ -13,3 +13,58 @@
   background-size: cover;
   border: 1px solid #ddd;
 }
+
+.modal {
+  display: none;
+}
+
+.modal.show-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(0 0 0 / 70%);
+  z-index: 1000;
+}
+
+.modal-content {
+  width: min(90vw, 520px);
+  height: min(90vh, 720px);
+  background-color: #fff;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 75% auto;
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  cursor: pointer;
+  font-size: 28px;
+  line-height: 1;
+}
+
+.modal-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 64px;
+  border: 0;
+  background: rgb(255 255 255 / 85%);
+  color: #111;
+  cursor: pointer;
+  font-size: 44px;
+  line-height: 1;
+}
+
+.modal-arrow-left {
+  left: 32px;
+}
+
+.modal-arrow-right {
+  right: 32px;
+}
